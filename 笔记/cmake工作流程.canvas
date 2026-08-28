@@ -1,0 +1,21 @@
+{
+	"nodes":[
+		{"id":"3887653c8d061b1e","type":"text","text":"项目概况","x":-380,"y":-205,"width":116,"height":70},
+		{"id":"4f57e85fa3fef8ff","type":"text","text":"cmakeist","x":-380,"y":10,"width":116,"height":70},
+		{"id":"ef26032dc8936017","type":"text","text":"make","x":-212,"y":-199,"width":93,"height":58},
+		{"id":"d610fb7eb6f3c4a7","type":"text","text":"简单步骤","x":-63,"y":-205,"width":116,"height":70},
+		{"id":"c6aa4390dd1c7714","type":"text","text":"makefile","x":-119,"y":10,"width":233,"height":70},
+		{"id":"a5bcee457dab257f","type":"text","text":"make（执行者）","x":143,"y":-205,"width":158,"height":70},
+		{"id":"877b017ae06d2db1","type":"text","text":"使用g++","x":166,"y":10,"width":112,"height":70},
+		{"id":"df475d1d69912fc2","type":"text","text":"编译完成","x":367,"y":-205,"width":113,"height":70}
+	],
+	"edges":[
+		{"id":"07eedabf9e0c7f8b","fromNode":"3887653c8d061b1e","fromSide":"right","toNode":"ef26032dc8936017","toSide":"left"},
+		{"id":"84b048a27b5630e5","fromNode":"3887653c8d061b1e","fromSide":"bottom","toNode":"4f57e85fa3fef8ff","toSide":"top","label":"写在"},
+		{"id":"d59aae33151aa683","fromNode":"ef26032dc8936017","fromSide":"right","toNode":"d610fb7eb6f3c4a7","toSide":"left"},
+		{"id":"b0e85a1c499ad606","fromNode":"d610fb7eb6f3c4a7","fromSide":"bottom","toNode":"c6aa4390dd1c7714","toSide":"top","label":"写在"},
+		{"id":"7d84a88e05adb01f","fromNode":"d610fb7eb6f3c4a7","fromSide":"right","toNode":"a5bcee457dab257f","toSide":"left"},
+		{"id":"0205ee46d8af34b9","fromNode":"a5bcee457dab257f","fromSide":"bottom","toNode":"877b017ae06d2db1","toSide":"top"},
+		{"id":"e27c1af755304e05","fromNode":"a5bcee457dab257f","fromSide":"right","toNode":"df475d1d69912fc2","toSide":"left"}
+	]
+}
