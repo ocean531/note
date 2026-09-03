@@ -188,3 +188,12 @@ int main(int argc , char*argv){
 ```
 argc 是保存运行时传入的参数的个数
 argv是保存运行时传入的参数
+
+##### 模板
+```C++
+template <typename T> 
+ T const& Max (T const& a, T const& b) {
+	return a < b ? b:a; 
+ }
+```
+不先标明类型，在调用的时候编译器根据类型生成函数
