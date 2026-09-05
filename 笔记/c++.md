@@ -165,6 +165,7 @@ for (int &x : my_array) {
 	x *= 2; 
 	cout << x << endl; 
 } 
+
 for (auto &x : my_array) { 
 	x *= 2; 
 	cout << x << endl; }
@@ -197,3 +198,21 @@ template <typename T>
  }
 ```
 不先标明类型，在调用的时候编译器根据类型生成函数
+
+##### 智能指针
+智能指针可以自动地销毁，避免了因为疏忽所导致的内存泄漏问题
+```
+#include<memory>
+
+std::unique_ptr<T> ptr1 = std::make_unique<T>(); //T为具体的数据类型
+
+```
+
+unique_ptr的特点是当指针被销毁的时候，所指的内存也会被销毁，这就要求不能有两个uniqueptr同时拥有一个对象，也不能赋值和拷贝，如果要转移所有权
+
+```
+std::unique_ptr<T> p1 = std::make_uniuqe<T>();
+std::unique_ptr<T> p2 = std::move(p1)；
+```
+这时p1就变成了空指针
+shared_ptr则是可以支持多个指针同时拥有一个对象，内部是引用计数机制，当引用归零，内存释放
