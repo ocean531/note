@@ -14,7 +14,7 @@ int main(){
 	MV_CC_Finalize(); //程序退出时，反初始化SDK，释放SDK所占的资源
 	}
 ```
-在单个进程中，仅可执行该套流程一次
+**在单个进程中，仅可执行该套流程一次
 
 #### 初始化相机
 ##### 1.枚举相机
@@ -25,7 +25,7 @@ MV_CC_DEVICE_INFO_LIST stDeviceList ; //这是一个结构体，包含在线设�
 memset(&stDeviceList,0,sizeof(MV_CC_DEVICE_INFO_LIST));
 nRet = MV_CC_EnumDevices(MV_GIGE_DEVICE|MV_USB_DEVICE,&stDeviceList); //需要传入对应的设备接口类型nTLayerType
 
-Check(nRet);
+
 
 //还有两种枚举方式，可以过滤和进行排序
 ```
@@ -34,6 +34,7 @@ Check(nRet);
 ![[Pasted image 20260907183427.png]]
 
 ###### MV_CC_DEVICE_INFO_LIST 结构体
+包括两个成员变量，nDeviceNum 表示在线设备的数量，pDeviceInfo[] 所有的在线设备，最大为256个
 
 ##### 2.创建相机实例
 创建相机实例，调用MV_CC_CreateHandle(),需传入设备信息pstDevinfo。
@@ -43,7 +44,7 @@ void* handle = NULL;
 //选择设备并创建句柄
 nRet = MV_CC_CreateHandle(&handle,stDeviceList.pDeviceInfo[nIndex]);
 
-Check(nRet);
+
 ```
 
 ##### 3.打开相机
@@ -52,7 +53,6 @@ Check(nRet);
 //打开相机
 MV_CC_OpenDevice(handle);
 
-Check(nRet);
 ```
 该方式默认相机实例独占物理相机的访问权限
 ##### 设置参数（可选）
@@ -65,12 +65,13 @@ Check(nRet);
 ##### 5.销毁相机实例
 ```
 nRet = MV_CC_DestroyHandle(handle);
-Check(nRet);
 
 ```
 
 
 #### 取流操作
 ```
+//开始取流
+
 
 ```

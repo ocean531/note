@@ -91,3 +91,31 @@ target_link_libraries(opencv ${OpenCV_LIBS}) //链接库
 
 ```
 
+##### set()的使用
+set可以将一些值设置成一个变量
+```
+set(VAR [VALUE])
+```
+VAR：变量名       VALUE 变量的值
+```
+set(CMAKE_CXX_STANDARD 11) //也可以设置C++标准
+```
+在使用变量时，需要 ${VAR}
+
+也可以设置可执行程序输出的路径：定义这个固定的宏EXECUTABLE_OUT_PUT_PATH
+```
+set(HOME /home/robin/linux/sort)
+set(EXECUTABLE_OUTPUT_PATH ${HOME}/bin)
+```
+
+##### 搜索文件
+```
+file(GLOB/GLOB_RECURSE 变量名 搜索的文件路径和文件类型)
+```
+GLOB表示只在指定的文件中搜索，GLOB_RECURSE表示对指定文件夹中的文件进行递归操作
+例：
+```
+file(GLOB PATH_SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
+file(GLOB_RECURSE PATH_HEAD ${CMAKE_CURRENT_SOURCE_DIR}/src/*.hpp)
+```
+file会创建一个变量然后把搜索到的变量存储在变量中
