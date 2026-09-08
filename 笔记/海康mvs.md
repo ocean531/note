@@ -68,3 +68,9 @@ nRet = MV_CC_DestroyHandle(handle);
 Check(nRet);
 
 ```
+
+
+#### 取流操作
+```
+
+```
