@@ -79,7 +79,7 @@ target_link_libraries(my_app PRIVATE my_lib2)
 该命令为每个库单独添加头文件路径，避免了冲突和污染问题，可以设置 PUBLIC / PRIVATE ，如果是public的话头文件就会向下传递给可执行文件，反之则不会
 
 
-以opencv的库为例
+opencv库
 ``` CMakeLists 
 find_package(OpenCV REQUIRED) //寻找对应的包
 
