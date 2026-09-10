@@ -236,3 +236,57 @@ shared_ptr则是可以支持多个指针同时拥有一个对象，内部是引�
 把某一段内存全部填入输入的值，通常用于清理一段内存，一般是把内存按字节全填入0
 
 ### lambda表达式
+lambda是一种定义匿名函数对象的简便方法，基本语法如下
+```
+[capture list] (parameter list) -> retruntype {function body};
+```
+capture list ：捕获列表，用于指定表达式可以访问的变量，并且可以指定时按值捕获还是引用捕获
+parameter list:参数列表，用于表示lambda表达式的参数，可以为空表示没有参数，也可以用auto关键字实现泛型参数
+returntype，返回值类型，用于指定lambda表达式的返回值类型，可以省略，表示有编译器根据函数体推导，也可以用->指定，也可以用auto自动推导（C++14）
+function body：函数体
+
+**值捕获：**
+```
+int x = 10; 
+auto f = [x] (int y) -> int { return x + y; }; // 值捕获 x 
+x = 20; // 修改外部的 x 
+cout << f(5) << endl; // 输出 15，不受外部 x 的影响
+```
+**引用捕获：**
+```
+int x = 10; 
+auto f = [&x] (int y) -> int { return x + y; }; // 引用捕获 x 
+x = 20; // 修改外部的 x 
+cout << f(5) << endl; // 输出 25，受外部 x 的影响
+```
+**隐式捕获**：在捕获列表中使用=或者&，表示按值还是引用捕获在表达式中所使用的所有变量，也可以单独指定一个变量
+```
+int x = 10;
+int y = 20;
+auto f = [=, &y] (int z) -> int { return x + y + z; }; // 隐式按值捕获 x，显式按引用捕获 y
+x = 30; // 修改外部的 x
+y = 40; // 修改外部的 y
+cout << f(5) << endl; // 输出 55，不受外部 x 的影响，受外部 y 的影响
+```
+**作为函数的参数**：可以作为一些函数的参数，用于实现自定义的逻辑，目前我只在sort和for_each函数中看到
+```
+sort(vec.begin(), vec.end(), [] (const Item& v1, const Item& v2) { return v1.a < v2.a; });
+```
+**作为函数返回值**：
+```
+// 定义一个函数，返回一个 Lambda表达式，实现两个数的加法
+auto make_adder(int x)
+{
+    return [x] (int y) -> int { return x + y; };
+}
+
+int main()
+{
+    // 调用函数，得到一个 Lambda表达式
+    auto add5 = make_adder(5);
+    // 调用 Lambda表达式
+    cout << add5(10) << endl; // 输出 15
+
+    return 0;
+}
+```
