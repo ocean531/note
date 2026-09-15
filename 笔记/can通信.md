@@ -32,4 +32,4 @@ sudo ip link set up vcan0
 ```
 socat -d -d pty,raw,echo=0 pty,raw,echo=0
 ```
-使用这个指令，可以出
+使用这个指令，可以创建两个相连的虚拟串口，可以通过程序来互相发送接收
