@@ -107,6 +107,10 @@ set(CMAKE_CXX_STANDARD 11) //也可以设置C++标准
 set(HOME /home/robin/linux/sort)
 set(EXECUTABLE_OUTPUT_PATH ${HOME}/bin)
 ```
+设置编译器执行的的C++标准
+```
+set(CMAKE_CXX_STANDARD 11) //设置对应的宏 CMAKE_CXX_STANDARD
+```
 
 ##### 搜索文件
 ```
@@ -119,3 +123,28 @@ file(GLOB PATH_SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 file(GLOB_RECURSE PATH_HEAD ${CMAKE_CURRENT_SOURCE_DIR}/src/*.hpp)
 ```
 file会创建一个变量然后把搜索到的变量存储在变量中
+
+##### 变量操作
+**字符串移除**：
+当我们通过file获取了一个路径下的所有文件并存储到一个变量中时，如果其中有一些是我们不需要的，我们可以使用list的字符串移除操作
+```
+list(REMOVE_ITEM <list> <value> [<value> ...])
+```
+例：
+```
+cmake_minimum_required(VERSION 3.0)
+project(TEST)
+set(TEMP "hello,world")
+file(GLOB SRC_1 ${PROJECT_SOURCE_DIR}/*.cpp)
+# 移除前日志
+message(STATUS "message: ${SRC_1}")
+# 移除 main.cpp
+list(REMOVE_ITEM SRC_1 ${PROJECT_SOURCE_DIR}/main.cpp)
+# 移除后日志
+message(STATUS "message: ${SRC_1}")
+```
+如果想要字符串拼接，把REMOVE_ITEM换成APPEND即可
+```
+list(APPEND <list> [<element> ...])
+```
+后面两个变量的值会加到第一个变量中
