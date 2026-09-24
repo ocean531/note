@@ -339,7 +339,7 @@ C++11之后，支持右值引用
         other.size_ = 0;
     }
 ```
-以std::string为例，
+以std::string为例，string类型的构造函数就支持移动构造
 ```
 string a = "hello";
 auto b = a;//深拷贝，会先创建一片内存空间再将a复制过来
